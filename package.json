@@ -6,5 +6,10 @@
   "repository": "git@github.com:arseniisokolov/team-timezones.git",
   "author": "a_rsenii <arseniisokolov10@gmail.com>",
   "license": "MIT",
-  "private": true
+  "private": true,
+  "workspaces": ["client", "server"],
+  "scripts": {
+    "start": "yarn workspace client start & yarn workspace server start",
+    "prettier": "yarn workspace client prettier & yarn workspace server prettier"
+  }
 }
