@@ -1,0 +1,40 @@
+Arguments: 
+  /usr/local/bin/node /usr/local/Cellar/yarn/1.22.19/libexec/bin/yarn.js
+
+PATH: 
+  /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/mongodb/bin
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  16.16.0
+
+Platform: 
+  darwin x64
+
+Trace: 
+  SyntaxError: /Users/a_rsenii/projects/team-timezones/package.json: Unexpected token } in JSON at position 285
+      at JSON.parse (<anonymous>)
+      at /usr/local/Cellar/yarn/1.22.19/libexec/lib/cli.js:1629:59
+      at Generator.next (<anonymous>)
+      at step (/usr/local/Cellar/yarn/1.22.19/libexec/lib/cli.js:310:30)
+      at /usr/local/Cellar/yarn/1.22.19/libexec/lib/cli.js:321:13
+
+npm manifest: 
+  {
+    "name": "team-timezones",
+    "version": "1.0.0",
+    "description": "Compare timezones of teammates",
+    "main": "index.js",
+    "repository": "git@github.com:arseniisokolov/team-timezones.git",
+    "author": "a_rsenii <arseniisokolov10@gmail.com>",
+    "license": "MIT",
+    "private": true,
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

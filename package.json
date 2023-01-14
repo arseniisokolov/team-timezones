@@ -1,0 +1,10 @@
+{
+  "name": "team-timezones",
+  "version": "1.0.0",
+  "description": "Compare timezones of teammates",
+  "main": "index.js",
+  "repository": "git@github.com:arseniisokolov/team-timezones.git",
+  "author": "a_rsenii <arseniisokolov10@gmail.com>",
+  "license": "MIT",
+  "private": true
+}
