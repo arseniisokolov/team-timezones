@@ -7,7 +7,10 @@
   "author": "a_rsenii <arseniisokolov10@gmail.com>",
   "license": "MIT",
   "private": true,
-  "workspaces": ["client", "server"],
+  "workspaces": [
+    "client",
+    "server"
+  ],
   "scripts": {
     "start": "yarn workspace client start & yarn workspace server start",
     "prettier": "yarn workspace client prettier & yarn workspace server prettier"
