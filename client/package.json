@@ -69,9 +69,10 @@
     "workbox-webpack-plugin": "^6.4.1"
   },
   "devDependencies": {
-    "prettier": "2.8.3"
+    "css-loader": "^6.7.3",
+    "prettier": "2.8.3",
+    "style-loader": "^3.3.1"
   },
-
   "eslintConfig": {
     "extends": [
       "react-app",
