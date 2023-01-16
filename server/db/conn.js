@@ -13,6 +13,7 @@ module.exports = {
         _db = db.db(DB_NAME);
         console.log("Successfully connected to MongoDB.");
       }
+
       return callback(err);
     });
   },
