@@ -1,51 +1,29 @@
-import { useEffect } from "react";
-import logo from "./logo.svg";
+import { useEffect, useState } from "react";
 
-import "./App.css";
+import { Person } from "../../types";
+import { fetchPersons } from "./api/persons";
+import { PersonRow } from "./components/person-row";
 
-const { REACT_APP_HOST_NAME, REACT_APP_SERVER_PORT } = process.env;
+import styles from "./app.module.css";
 
-function App() {
+export const App = () => {
+  const [persons, setPersons] = useState<Person[]>();
+
+  const load = async () => {
+    const data = await fetchPersons();
+    setPersons(data);
+  };
+
   useEffect(() => {
-    async function fetchData() {
-      const response = await fetch(
-        `${REACT_APP_HOST_NAME}:${REACT_APP_SERVER_PORT}/record`
-      );
-
-      if (!response.ok) {
-        const message = `An error has occurred: ${response.statusText}`;
-        window.alert(message);
-        return;
-      }
-
-      const record = await response.json();
-
-      console.log(record);
-    }
-
-    fetchData();
-
-    return;
+    load();
   }, []);
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={styles.app}>
+      <header>Compare timezones</header>
+      <main>
+        {persons?.map((person) => <PersonRow key={person._id} {...person} />)}
+      </main>
     </div>
   );
-}
-
-export default App;
+};
