@@ -6,6 +6,7 @@ export function toDto(fields: FormFields): Omit<Person, 'uuid'> {
     return {
         firstName: fields.firstName,
         lastName: fields.lastName,
+        city: fields.city,
         timeZone: Number(fields.timezone),
     };
 }
