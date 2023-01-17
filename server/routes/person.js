@@ -1,9 +1,7 @@
 const express = require("express");
+const { DB_COLLECTIONS } = require('../constants');
 
-// recordRoutes is an instance of the express router.
-// We use it to define our routes.
-// The router will be added as a middleware and will take control of requests starting with path /record.
-const recordRoutes = express.Router();
+const routes = express.Router();
 
 // This will help us connect to the database
 const dbo = require("../db/conn");
@@ -11,18 +9,14 @@ const dbo = require("../db/conn");
 // This help convert the id from string to ObjectId for the _id.
 const ObjectId = require("mongodb").ObjectId;
 
-const COLLECTIONS = {
-  persons: "persons",
-};
-
-recordRoutes.route("/person").get(function (req, res) {
+routes.route("/person").get(function (req, res) {
   let db_connect = dbo.getDb();
   db_connect
-    .collection(COLLECTIONS.persons)
+    .collection(DB_COLLECTIONS.persons)
     .find({})
     .toArray(function (err, result) {
       if (err) {
-        throw err
+        throw err;
       }
       res.json(result);
     });
@@ -89,4 +83,4 @@ recordRoutes.route("/person").get(function (req, res) {
 //     });
 // });
 
-module.exports = recordRoutes;
+module.exports = routes;

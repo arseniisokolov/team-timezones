@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { Person } from "../../types";
-import { fetchPersons } from "./api/persons";
+import { fetchGeo, fetchPersons } from "./api/persons";
 import { PersonRow } from "./components/person-row";
 
 import styles from "./app.module.css";
@@ -10,8 +10,9 @@ export const App = () => {
   const [persons, setPersons] = useState<Person[]>();
 
   const load = async () => {
-    const data = await fetchPersons();
-    setPersons(data);
+    // const data = await fetchPersons();
+    const geo = await fetchGeo();
+    // setPersons(data);
   };
 
   useEffect(() => {
