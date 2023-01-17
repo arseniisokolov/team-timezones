@@ -3,57 +3,57 @@ import { Person } from "../../../types";
 const { REACT_APP_HOST_NAME, REACT_APP_SERVER_PORT } = process.env;
 
 export async function fetchPersons() {
-    const response = await fetch(
-        `${REACT_APP_HOST_NAME}:${REACT_APP_SERVER_PORT}/person`
-    );
+  const response = await fetch(
+    `${REACT_APP_HOST_NAME}:${REACT_APP_SERVER_PORT}/person`
+  );
 
-    if (!response.ok) {
-        console.log(`An error has occurred: ${response.statusText}`);
-        return;
-    }
+  if (!response.ok) {
+    console.log(`An error has occurred: ${response.statusText}`);
+    return;
+  }
 
-    const record = await response.json();
+  const record = await response.json();
 
-    console.log(record);
-    return record;
+  console.log(record);
+  return record;
 }
 
-export async function createPerson(data: Omit<Person, 'uuid'>) {
-    const response = await fetch(
-        `${REACT_APP_HOST_NAME}:${REACT_APP_SERVER_PORT}/person`,
-        {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        }
-    );
-
-    if (!response.ok) {
-        console.log(`An error has occurred: ${response.statusText}`);
-        return;
+export async function createPerson(data: Omit<Person, "uuid">) {
+  const response = await fetch(
+    `${REACT_APP_HOST_NAME}:${REACT_APP_SERVER_PORT}/person`,
+    {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
     }
+  );
 
-    const record = await response.json();
+  if (!response.ok) {
+    console.log(`An error has occurred: ${response.statusText}`);
+    return;
+  }
 
-    console.log(record);
-    return record;
+  const record = await response.json();
+
+  console.log(record);
+  return record;
 }
 
 export async function fetchGeo() {
-    const response = await fetch(
-        `${REACT_APP_HOST_NAME}:${REACT_APP_SERVER_PORT}/geo`
-    );
+  const response = await fetch(
+    `${REACT_APP_HOST_NAME}:${REACT_APP_SERVER_PORT}/geo`
+  );
 
-    if (!response.ok) {
-        console.log(`An error has occurred: ${response.statusText}`);
-        return;
-    }
+  if (!response.ok) {
+    console.log(`An error has occurred: ${response.statusText}`);
+    return;
+  }
 
-    const record = await response.json();
+  const record = await response.json();
 
-    console.log('--- geo', record);
-    return record;
+  console.log("--- geo", record);
+  return record;
 }

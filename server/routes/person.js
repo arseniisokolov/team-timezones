@@ -1,6 +1,6 @@
 const crypto = require("crypto");
 const express = require("express");
-const { DB_COLLECTIONS } = require('../constants');
+const { DB_COLLECTIONS } = require("../constants");
 
 const routes = express.Router();
 
@@ -40,24 +40,20 @@ routes.route("/person").post(function (req, res) {
 
   req.body.uuid = crypto.randomUUID();
 
-  const collection = db_connect
-    .collection(DB_COLLECTIONS.persons);
+  const collection = db_connect.collection(DB_COLLECTIONS.persons);
 
-  collection
-    .insertOne(req.body, function (err) {
-      if (err) {
-        throw err
-      };
-    });
+  collection.insertOne(req.body, function (err) {
+    if (err) {
+      throw err;
+    }
+  });
 
-  collection
-    .find({})
-    .toArray(function (err, result) {
-      if (err) {
-        throw err;
-      }
-      res.json(result);
-    });
+  collection.find({}).toArray(function (err, result) {
+    if (err) {
+      throw err;
+    }
+    res.json(result);
+  });
 });
 
 // // This section will help you update a record by id.

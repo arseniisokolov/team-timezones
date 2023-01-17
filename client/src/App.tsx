@@ -24,7 +24,9 @@ export const App = () => {
     <div className={styles.app}>
       <header>Compare timezones</header>
       <main>
-        {persons?.map((person) => <PersonRow key={person.uuid} {...person} />)}
+        {persons?.map((person) => (
+          <PersonRow key={person.uuid} {...person} />
+        ))}
         <TeammateForm onCreate={setPersons} />
       </main>
     </div>
