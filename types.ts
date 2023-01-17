@@ -1,8 +1,5 @@
-export type WithId = {
-    _id: string;
-};
-
-export type Person = WithId & {
+export type Person = {
+    uuid: string;
     firstName: string;
     lastName?: string;
     timeZone: number;

@@ -1,3 +1,4 @@
+const crypto = require("crypto");
 const express = require("express");
 const { DB_COLLECTIONS } = require('../constants');
 
@@ -34,21 +35,30 @@ routes.route("/person").get(function (req, res) {
 //     });
 // });
 
-// // This section will help you create a new record.
-// recordRoutes.route("/record/add").post(function (req, response) {
-//   let db_connect = dbo.getDb();
-//   let myobj = {
-//     name: req.body.name,
-//     position: req.body.position,
-//     level: req.body.level,
-//   };
-//   db_connect
-//     .collection(COLLECTIONS.people)
-//     .insertOne(myobj, function (err, res) {
-//       if (err) throw err;
-//       response.json(res);
-//     });
-// });
+routes.route("/person").post(function (req, res) {
+  const db_connect = dbo.getDb();
+
+  req.body.uuid = crypto.randomUUID();
+
+  const collection = db_connect
+    .collection(DB_COLLECTIONS.persons);
+
+  collection
+    .insertOne(req.body, function (err) {
+      if (err) {
+        throw err
+      };
+    });
+
+  collection
+    .find({})
+    .toArray(function (err, result) {
+      if (err) {
+        throw err;
+      }
+      res.json(result);
+    });
+});
 
 // // This section will help you update a record by id.
 // recordRoutes.route("/update/:id").post(function (req, response) {
